@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virgilio Ristorante - Alta Cocina Italiana</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-login">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="login-form">
+                <input type="email" placeholder="Correo Electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit" class="btn">Ingresar</button>
+            </form>
+            <p>¿No tienes cuenta? <a href="#" id="show-register">Regístrate aquí</a></p>
+        </div>
+    </div>
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-register">&times;</span>
+            <h2>Crear Cuenta</h2>
+            <form id="register-form">
+                <input type="text" placeholder="Nombre Completo" required>
+                <input type="email" placeholder="Correo Electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit" class="btn">Registrarse</button>
+            </form>
+            <p>¿Ya tienes cuenta? <a href="#" id="show-login">Inicia sesión</a></p>
+        </div>
+    </div>
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-payment">&times;</span>
+            <h2>Procesar Pago</h2>
+            <form id="payment-form">
+                <input type="text" placeholder="Nombre en la tarjeta" required>
+                <input type="text" placeholder="Número de la tarjeta (XXXX XXXX XXXX XXXX)" required>
+                <input type="text" placeholder="Fecha de Vencimiento (MM/AA)" required>
+                <input type="text" placeholder="CVC" required>
+                <button type="submit" class="btn">Pagar Ahora</button>
+            </form>
+        </div>
+    </div>
+    
+    <aside id="cart-sidebar">
+        <div id="cart-header">
+            <h3>Mi Pedido</h3>
+            <span class="close-btn" id="close-cart">&times;</span>
+        </div>
+        <div id="cart-items"></div>
+        <div id="cart-footer">
+            <div class="cart-total">
+                <strong>Total:</strong> <span id="cart-total-price">$0</span>
+            </div>
+            <button class="btn btn-checkout" id="checkout-btn">Proceder al Pago</button>
+        </div>
+    </aside>
+
+    <header>
+        <nav class="container">
+            <a href="#" class="logo" data-page="home">Virgilio</a>
+            
+            <ul class="desktop-menu">
+                <li><a href="#" data-page="menu">Menú</a></li>
+                <li><a href="#" data-page="reservations">Reservas</a></li>
+                <li><a href="#" data-page="about">Nosotros</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="#" id="cart-icon"><ion-icon name="cart-outline"></ion-icon><span id="cart-counter">0</span></a>
+                <a href="#" id="user-action-btn" data-page="login">Iniciar Sesión</a>
+            </div>
+
+            <button id="hamburger-btn" aria-label="Abrir Menú">
+                <ion-icon name="menu-outline"></ion-icon>
+            </button>
+        </nav>
+
+        <div id="mobile-menu">
+            <ul>
+                <li><a href="#" data-page="menu">Menú</a></li>
+                <li><a href="#" data-page="reservations">Reservas</a></li>
+                <li><a href="#" data-page="about">Nosotros</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section id="home-page" class="page active">
+            <div class="hero">
+                <div class="hero-content container">
+                    <h1>Auténtica Cocina Italiana, una Experiencia Inolvidable</h1>
+                    <p>Ingredientes frescos y recetas artesanales para deleitar tu paladar.</p>
+                    <a href="#" class="btn" data-page="reservations">Reservar una Mesa</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu-page" class="page container">
+            <h2>Nuestro Menú</h2>
+            <div id="menu-filters">
+                <button class="filter-btn active" data-filter="all">Todo</button>
+                <button class="filter-btn" data-filter="pastas">Pastas</button>
+                <button class="filter-btn" data-filter="pizzas">Pizzas</button>
+                <button class="filter-btn" data-filter="entradas">Entradas</button>
+            </div>
+            <div id="menu-grid"></div>
+        </section>
+
+        <section id="reservations-page" class="page container">
+            <h2>Hacer una Reserva</h2>
+            <div class="table-selection-wrapper">
+                <div class="table-map-container">
+                    <h4>1. Selecciona tu Mesa</h4>
+                    <div id="table-map"></div>
+                    <div class="table-legend">
+                        <div><span class="legend-box available"></span> Disponible</div>
+                        <div><span class="legend-box occupied"></span> Ocupada</div>
+                        <div><span class="legend-box selected"></span> Seleccionada</div>
+                    </div>
+                </div>
+                <div class="reservation-form-container">
+                    <h4>2. Completa tus Datos</h4>
+                    <p>Mesa seleccionada: <strong id="selected-table-display">Ninguna</strong></p>
+                    <form id="reservation-form">
+                        <input type="hidden" id="selected-table-input" name="selected_table" required>
+                        <div class="form-group">
+                            <input type="text" id="res-name" placeholder="Nombre Completo" required>
+                            <input type="email" id="res-email" placeholder="Correo Electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" id="res-date" required>
+                            <input type="time" id="res-time" required>
+                            <input type="number" id="res-guests" placeholder="Nº de personas" min="1" max="12" required>
+                        </div>
+                        <textarea id="res-comments" placeholder="Ocasión especial o comentarios adicionales"></textarea>
+                        <button type="submit" class="btn">Confirmar Reserva</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-page" class="page container">
+            <h2>Nuestra Historia</h2>
+            <p>Virgilio Ristorante nació de la pasión por la excelencia culinaria italiana. Nuestro modelo se basa en brindar una experiencia gastronómica de alta calidad, combinando una atención personalizada con un ambiente acogedor que ha fortalecido nuestra reputación y fidelizado a nuestra clientela.</p>
+        </section>
+
+        <section id="profile-page" class="page container">
+            <h2 id="profile-welcome">Bienvenido</h2>
+            <div class="profile-tabs">
+                <button class="profile-tab-btn active" data-tab="profile-orders">Mis Pedidos</button>
+                <button class="profile-tab-btn" data-tab="profile-reservations">Mis Reservas</button>
+                <button class="profile-tab-btn" data-tab="profile-feedback">Dejar un Comentario</button>
+            </div>
+            <div id="profile-orders" class="profile-content active">
+                <h3>Historial de Pedidos</h3>
+                <p>Aquí verías tus pedidos anteriores.</p>
+            </div>
+            <div id="profile-reservations" class="profile-content">
+                <h3>Historial de Reservas</h3>
+                <p>Aquí aparecerían tus reservas confirmadas.</p>
+            </div>
+            <div id="profile-feedback" class="profile-content">
+                <h3>Tu Opinión Nos Importa</h3>
+                <form id="feedback-form">
+                    <textarea placeholder="Escribe tu valoración sobre tu última visita..." required></textarea>
+                    <button type="submit" class="btn">Enviar Comentario</button>
+                </form>
+            </div>
+             <button id="logout-btn" class="btn btn-secondary">Cerrar Sesión</button>
+        </section>
+    </main>
+    
+    <div id="toast-notification" class=""></div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Virgilio Ristorante. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
