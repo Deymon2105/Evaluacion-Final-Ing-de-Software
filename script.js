@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- SIMULACIÓN DE DATOS ---
     const menuItems = [
-        { id: 1, name: 'Spaghetti Carbonara', category: 'pastas', price: 18, description: 'Pasta con huevo, queso pecorino, guanciale y pimienta negra.', image: 'https://images.unsplash.com/photo-1608796837873-a3d7d7457a43?auto=format&fit=crop&q=80&w=1974' },
-        { id: 2, name: 'Pizza Margherita', category: 'pizzas', price: 15, description: 'Salsa de tomate San Marzano, mozzarella fresca, albahaca y aceite de oliva.', image: 'https://images.unsplash.com/photo-1598021680133-eb3a38043645?auto=format&fit=crop&q=80&w=1964' },
-        { id: 3, name: 'Bruschetta al Pomodoro', category: 'entradas', price: 9, description: 'Pan tostado con tomates frescos, ajo, albahaca y aceite de oliva.', image: 'https://images.unsplash.com/photo-1579631542720-3a838317e579?auto=format&fit=crop&q=80&w=2070' },
-        { id: 4, name: 'Lasagna alla Bolognese', category: 'pastas', price: 20, description: 'Capas de pasta con ragú de carne, bechamel y queso Parmigiano Reggiano.', image: 'https://images.unsplash.com/photo-1619895092494-11c5a931619e?auto=format&fit=crop&q=80&w=1974' },
-        { id: 5, name: 'Pizza Prosciutto e Funghi', category: 'pizzas', price: 19, description: 'Mozzarella, jamón cocido, champiñones frescos y salsa de tomate.', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=1981' }
+        { id: 1, name: 'Spaghetti Carbonara', category: 'pastas', price: 9.999, description: 'Pasta con huevo, queso pecorino, guanciale y pimienta negra.', image: 'https://images.unsplash.com/photo-1633337474564-1d9478ca4e2e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3BhZ2hldHRpJTIwY2FyYm9uYXJhfGVufDB8fDB8fHww' },
+        { id: 2, name: 'Pizza Margherita', category: 'pizzas', price: 8.499, description: 'Salsa de tomate San Marzano, mozzarella fresca, albahaca y aceite de oliva.', image: 'https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-margarita-1080x671.jpg' },
+        { id: 3, name: 'Bruschetta al Pomodoro', category: 'entradas', price: 4.999, description: 'Pan tostado con tomates frescos, ajo, albahaca y aceite de oliva.', image: 'https://cookingwithbry.com/wp-content/uploads/Bruschetta-con-Pomodoro-Recipe-5-735x735.jpg?_t=1750383552' },
+        { id: 4, name: 'Lasagna alla Bolognese', category: 'pastas', price: 11.999, description: 'Capas de pasta con ragú de carne, bechamel y queso Parmigiano Reggiano.', image: 'https://www.gourmet.cl/wp-content/uploads/2016/09/iStock-505754880-1.jpg' },
+        { id: 5, name: 'Pizza Prosciutto e Funghi', category: 'pizzas', price: 11.999, description: 'Mozzarella, jamón cocido, champiñones frescos y salsa de tomate.', image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=1981' }
     ];
     
     // Simulación de disponibilidad de mesas
